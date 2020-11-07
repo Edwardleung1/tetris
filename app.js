@@ -90,5 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Move the tetromino left, unless is at the edge or there is a blockage
+  function moveLeft() {
+    undraw()
+    const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+
+    // Move position if its not in the left edge
+    if(!isAtLeftEdge) currentPosition -= 1;
+
+    // Stop if theres another tetromino
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition += 1;
+    }
+  }
+
+
 
 });
