@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoader', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
   // Turn all the divs into an array
   let squares = Array.from(document.querySelectorAll('.grid div'));
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoader', () => {
   const width = 10;
 
   // The Tetrominoes
+  // 4 rotations in each array
   const lTetromino = [
     [1, width+1, width*2+1, 2],
     [width, width+1, width+2, width*2+2],
@@ -41,5 +42,27 @@ document.addEventListener('DOMContentLoader', () => {
     [1, width+1, width*2+1, width*3+1],
     [width, width+1, width+2, width+3]
   ]
+
+  // Array of tetrominoes
+  const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+
+  let currentPosition = 4;
+  let current = theTetrominoes[0][0];
+
+  // Draw the first rotation in the first tetromino
+  function draw() {
+    current.forEach(index => {
+      squares[currentPosition + index].classList.add('tetromino');
+    })
+  }
+
+  draw();
+
+
+
+
+
+
+
 
 });
