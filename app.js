@@ -121,6 +121,21 @@ document.addEventListener('DOMContentLoaded', () => {
     draw()
   }
 
+  // Move the tetromino right, unless is at the edge or there is a blockage
+  function moveRight() {
+    undraw()
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === width -1)
 
+    // Move position if its not in the right edge
+    if(!isAtRightEdge) currentPosition += 1;
+
+    // Stop if theres already another tetromino
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+      currentPosition -= 1;
+    }
+
+    draw()
+
+  }
 
 });
