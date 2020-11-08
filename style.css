@@ -1,6 +1,18 @@
-/* To make .grid and .mini-grid display inline */
+body {
+  text-align: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+button {
+  margin-bottom: 50px;
+}
+
+/* To make .grid and .mini-grid display inline and center everything */
 .container {
   display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .grid {
@@ -22,6 +34,7 @@
 }
 
 .mini-grid {
+  margin-left: 50px;
   width: 80px;
   height: 80px;
   display: flex;
