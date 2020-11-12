@@ -289,8 +289,7 @@ const colors = [
       scoreDisplay.innerHTML = `You scored ${score} points. <br> Game Over.`;
       document.getElementById("start-button").disabled = true;
       document.getElementById("play-button").disabled = true;
-      document.keyCode(36).disabled = true;
-      document.keyCode(40).disabled = true;
+
       clearInterval(timerId);
     }
   }
