@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 10;
   let nextRandom = 0;
   let timerId;
+  let score = 0
 
   // The Tetrominoes
   // 4 rotations in each array
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition = 4;
       draw()
       displayShape()
+      addScore()
     }
   }
 
@@ -203,6 +205,29 @@ document.addEventListener('DOMContentLoaded', () => {
       displayShape()
     }
   })
+
+
+  // Add score
+  function addScore() {
+    for (let i = 0; i < 199; i +=width) {
+      // Every square that makes up a row
+      const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+
+      // Check if every square in row contains taken
+      if(row.every(index => squares[index].classList.contains('taken'))) {
+        score +=10
+        scoreDisplay.innerHTML = score
+        row.forEach(index => {
+          squares[index].classList.remove('taken')
+          squares[index].classList.remove('tetromino')
+        })
+        const squaresRemoved = squares.splice(i, width)
+        // Append squares back onto our grid
+        squares = squaresRemoved.concat(squares)
+        squares.forEach(cell => grid.appendChild(cell))
+      }
+    }
+  }
 
 
 });
