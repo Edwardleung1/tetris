@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
   // Turn all the divs into an array
   let squares = Array.from(document.querySelectorAll('.grid div'));
-  const ScoreDisplay = document.querySelector('#score');
-  const StartBtn = document.querySelector('#start-button');
+  const scoreDisplay = document.querySelector('#score');
+  const startBtn = document.querySelector('#start-button');
   const width = 10;
   let nextRandom = 0;
+  let timerId;
 
   // The Tetrominoes
   // 4 rotations in each array
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentPosition -= 1;
     }
 
+    // Re-draw tetromino in its new position
     draw()
   }
 
@@ -186,6 +188,21 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  // Add functionality to the button 
+  startBtn.addEventListener('click', () => {
+    // If timeId value is not null we pause the game
+    if (timerId) {
+      clearInterval(timerId)
+      timerId = null
+    } else {
+      // When the start btn is pressed
+      draw()
+      timerId = setInterval(moveDown, 1000)
+      // Select next random shape on mini-grid
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+      displayShape()
+    }
+  })
 
-  
+
 });
