@@ -14,9 +14,17 @@
   <title>PLAY TETRIS - Edward Leung</title>
 </head>
 <body>
-  
-  <h3>Score:<span id="score"> 0</span></h3>
-  <button id="start-button">Start/Pause</button>
+  <!-- DIV Wrap -->
+  <div class="wrap">
+    <!-- Buttons -->
+    <div class="btns">
+      <button id="start-button">PLAY <i class="far fa-play-circle"></i></button>
+      <button id="play-button">SOUND <i class="fas fa-volume-mute"></i></button>
+      <audio id="player" src='/sound/tetris-theme.mp3' preload="auto" loop>
+      </audio>
+      <button id="restart-button">RESTART <i class="fas fa-redo-alt"></i></button>
+    </div>
+    <h3>SCORE: <span id="score"> 0</span></h3>
 
 <div class="container">
   <!-- GRID -->
@@ -252,6 +260,7 @@
     <div></div>
     <div></div>
   </div>
+</div>
 </div>
   <script src="app.js"></script>
 </body>
