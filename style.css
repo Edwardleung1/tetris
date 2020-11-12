@@ -139,3 +139,101 @@ i {
   height: 35px;
   width: 35px;
 }
+
+@media (max-width: 1600px) {
+  .grid {
+    width: 240px;
+    height: 480px;
+  }
+
+  .grid div {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tetris-logo {
+    width: 170px;
+  }
+
+  #start-button,
+  #play-button,
+  #restart-button,
+  i {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .grid {
+    width: 220px;
+    height: 440px;
+  }
+
+  .grid div {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tetris-logo {
+    width: 130px;
+  }
+
+  #start-button,
+  #play-button,
+  #restart-button,
+  i {
+    font-size: 16px;
+  }
+}
+
+.grid div:nth-child(-n + 200) {
+  box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.2) inset,
+    -12px -11px 19px 0 rgba(0, 0, 0, 0.15) inset;
+}
+
+.tetromino {
+  background: blue;
+}
+
+.mini-grid-container {
+  width: 320px;
+  text-align: center;
+  justify-content: center;
+}
+
+.mini-grid {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #b0f3f1;
+  margin: auto;
+}
+
+.mini-grid div {
+  height: 25px;
+  width: 25px;
+}
+
+@media (max-width: 1600px) {
+  .mini-grid {
+    width: 60px;
+    height: 60px;
+  }
+
+  .mini-grid div {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+.mini-grid div:nth-child(-n + 20) {
+  box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.5) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, 0.15) inset;
+}
+
+.controls-wrap {
+  position: absolute;
+  top: 350px;
+  left: 57vw;
+}
