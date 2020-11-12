@@ -1,60 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.grid');
-  // Turn all the divs into an array
-  let squares = Array.from(document.querySelectorAll('.grid div'));
-  const scoreDisplay = document.querySelector('#score');
-  const startBtn = document.querySelector('#start-button');
-  const width = 10;
-  let nextRandom = 0;
-  let timerId;
-  let score = 0
-  const colors = [
-    'orange',
-    'red',
-    'purple',
-    'green',
-    'blue'
-  ]
+const grid = document.querySelector('.grid');
+let squares = Array.from(document.querySelectorAll('.grid div')); // Turn all the divs into an array
+const scoreDisplay = document.querySelector('#score');
+const startBtn = document.querySelector('#start-button');
+const restartBtn = document.querySelector('#restart-button');  
+const width = 10;
+let nextRandom = 0;
+let timerId;
+let score = 0
+const colors = [
+  'DeepSkyBlue',
+  'LimeGreen',
+  'DarkViolet',
+  'Yellow',
+  'Blue',
+  'DarkOrange',
+  'crimson',
+];
 
-  // The Tetrominoes
-  // 4 rotations in each array
+  // The Tetrominoes, 4 rotations in each array
   const lTetromino = [
     [1, width+1, width*2+1, 2],
     [width, width+1, width+2, width*2+2],
     [1, width+1, width*2+1, width*2],
     [width, width*2, width*2+1, width*2+2]
-  ]
+  ];
 
   const zTetromino = [
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1],
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1]
-  ]
+  ];
 
   const tTetromino = [
     [1, width, width+1, width+2],
     [1, width+1, width+2, width*2+1],
     [width, width+1, width+2, width*2+1],
     [1, width, width+1, width*2+1]
-  ]
+  ];
 
   const oTetromino = [
     [0, 1, width, width+1],
     [0, 1, width, width+1],
     [0, 1, width, width+1],
     [0, 1, width, width+1]
-  ]
+  ];
 
   const iTetromino = [
     [1, width+1, width*2+1, width*3+1],
     [width, width+1, width+2, width+3],
     [1, width+1, width*2+1, width*3+1],
     [width, width+1, width+2, width+3]
-  ]
+  ];
+
+  const lAltTetromino = [
+    [0, 1, width + 1, width * 2 + 1],
+    [width + 2, width * 2 + 2, width * 2 + 1, width * 2],
+    [1, width + 1, width * 2 + 1, width * 2 + 2],
+    [width + 2, width + 1, width, width * 2],
+  ];
+  
+  const zAltTetromino = [
+    [2, width + 2, width + 1, width * 2 + 1],
+    [width + 1, width, width * 2 + 2, width * 2 + 1],
+    [2, width + 2, width + 1, width * 2 + 1],
+    [width + 1, width, width * 2 + 2, width * 2 + 1],
+  ];
 
   // Array of tetrominoes
-  const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+  const theTetrominoes = [
+    lTetromino, 
+    zTetromino, 
+    tTetromino, 
+    oTetromino, 
+    iTetromino,
+    lAltTetromino,
+    zAltTetromino,
+  ];
 
   let currentPosition = 4;
   let currentRotation = 0;
