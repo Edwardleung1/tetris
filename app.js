@@ -281,15 +281,12 @@ const colors = [
 
   // Game over
   function gameOver() {
-    if(
+    if (
       current.some(index => 
         squares[currentPosition + index].classList.contains('taken')
       )
     ) {
       scoreDisplay.innerHTML = `You scored ${score} points. <br> Game Over.`;
-      document.getElementById("start-button").disabled = true;
-      document.getElementById("play-button").disabled = true;
-
       clearInterval(timerId);
     }
   }
